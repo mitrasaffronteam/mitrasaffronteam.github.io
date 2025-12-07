@@ -1,729 +1,838 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>زعفران میترا | طلای سرخ ایران</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
     <style>
-        /* Reset and Base Styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Vazirmatn', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+      /* Reset and Base Styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Vazirmatn", "Segoe UI", Tahoma, Geneva, Verdana,
+          sans-serif;
+      }
 
-        :root {
-            --primary: #d4af37;
-            --primary-dark: #b8941f;
-            --secondary: #8b0000;
-            --light: #f9f5e7;
-            --dark: #333;
-            --gray: #777;
-            --transition: all 0.3s ease;
-        }
+      :root {
+        --primary: #d4af37;
+        --primary-dark: #b8941f;
+        --secondary: #8b0000;
+        --light: #f9f5e7;
+        --dark: #333;
+        --gray: #777;
+        --transition: all 0.3s ease;
+      }
 
-        html {
-            scroll-behavior: smooth;
-        }
+      html {
+        scroll-behavior: smooth;
+      }
 
-        body {
-            background-color: var(--light);
-            color: var(--dark);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
+      body {
+        background-color: var(--light);
+        color: var(--dark);
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
 
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background-color: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            transition: var(--transition);
-        }
+      /* Navigation */
+      nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background-color: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        padding: 1rem 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 1000;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        transition: var(--transition);
+      }
 
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-weight: bold;
-            font-size: 1.5rem;
-            color: var(--secondary);
-        }
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: bold;
+        font-size: 1.5rem;
+        color: var(--secondary);
+      }
 
-        .logo i {
-            color: var(--primary);
-        }
+      .logo i {
+        color: var(--primary);
+      }
+      .logo .logo-icon {
+        width: 1.2em; /* Matches typical icon size relative to font */
+        height: auto;
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 10px; /* Same as the `gap: 10px` in .logo */
+      }
+      .nav-links {
+        display: flex;
+        gap: 2rem;
+      }
 
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-        }
+      .nav-links a {
+        text-decoration: none;
+        color: var(--dark);
+        font-weight: 500;
+        transition: var(--transition);
+        position: relative;
+      }
 
-        .nav-links a {
-            text-decoration: none;
-            color: var(--dark);
-            font-weight: 500;
-            transition: var(--transition);
-            position: relative;
-        }
+      .nav-links a:hover {
+        color: var(--primary);
+      }
 
-        .nav-links a:hover {
-            color: var(--primary);
-        }
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        right: 0;
+        width: 0;
+        height: 2px;
+        background-color: var(--primary);
+        transition: var(--transition);
+      }
 
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            right: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--primary);
-            transition: var(--transition);
-        }
+      .nav-links a:hover::after {
+        width: 100%;
+      }
 
-        .nav-links a:hover::after {
-            width: 100%;
-        }
+      .mobile-menu-btn {
+        display: none;
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+        color: var(--dark);
+      }
 
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--dark);
-        }
+      /* Hero Section */
+      .hero {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+          url("images/hero-bg.jpg");
+        background-size: cover;
+        background-position: center;
+        color: white;
+        padding: 0 1rem;
+      }
 
-        /* Hero Section */
-        .hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
-                        url('https://images.unsplash.com/photo-1596040033229-a9821ebd058d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
-            background-size: cover;
-            background-position: center;
-            color: white;
-            padding: 0 1rem;
-        }
+      .hero-content {
+        max-width: 800px;
+        opacity: 0;
+        transform: translateY(30px);
+        animation: fadeUp 1s forwards 0.5s;
+      }
 
-        .hero-content {
-            max-width: 800px;
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeUp 1s forwards 0.5s;
-        }
+      .hero h1 {
+        font-size: 3.5rem;
+        margin-bottom: 1rem;
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+      }
 
+      .hero p {
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 0.8rem 2rem;
+        background-color: var(--primary);
+        color: white;
+        border: none;
+        border-radius: 50px;
+        font-weight: bold;
+        text-decoration: none;
+        transition: var(--transition);
+        cursor: pointer;
+        box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+      }
+
+      .btn:hover {
+        background-color: var(--primary-dark);
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+      }
+
+      /* Sections */
+      section {
+        padding: 5rem 2rem;
+      }
+
+      .section-title {
+        text-align: center;
+        margin-bottom: 3rem;
+        position: relative;
+      }
+
+      .section-title h2 {
+        font-size: 2.5rem;
+        color: var(--secondary);
+        display: inline-block;
+      }
+
+      .section-title h2::after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        right: 50%;
+        transform: translateX(50%);
+        width: 80px;
+        height: 3px;
+        background-color: var(--primary);
+      }
+
+      /* About Section */
+      .about {
+        background-color: white;
+      }
+
+      .about-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+        align-items: center;
+      }
+
+      .about-text {
+        opacity: 0;
+        transform: translateX(-30px);
+        transition: all 0.8s ease;
+      }
+
+      .about-text.visible {
+        opacity: 1;
+        transform: translateX(0);
+      }
+
+      .about-image {
+        opacity: 0;
+        transform: translateX(30px);
+        transition: all 0.8s ease;
+      }
+
+      .about-image.visible {
+        opacity: 1;
+        transform: translateX(0);
+      }
+
+      .about-image img {
+        width: 100%;
+        border-radius: 10px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Products Section */
+      .products {
+        background-color: var(--light);
+      }
+
+      .products-grid {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+      }
+
+      .product-card {
+        background-color: white;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        transition: var(--transition);
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      .product-card.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .product-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .product-image {
+        height: 200px;
+        background-color: var(--primary);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 3rem;
+      }
+
+      .product-content {
+        padding: 1.5rem;
+      }
+
+      .product-content h3 {
+        margin-bottom: 0.5rem;
+        color: var(--secondary);
+      }
+
+      .product-content p {
+        color: var(--gray);
+        margin-bottom: 1rem;
+      }
+
+      .product-price {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .price {
+        font-weight: bold;
+        color: var(--primary);
+        font-size: 1.2rem;
+      }
+
+      /* Quality Section */
+      .quality {
+        background-color: white;
+      }
+
+      .quality-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+      }
+
+      .quality-item {
+        text-align: center;
+        padding: 2rem 1rem;
+        border-radius: 10px;
+        transition: var(--transition);
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      .quality-item.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .quality-item:hover {
+        background-color: var(--light);
+        transform: translateY(-5px);
+      }
+
+      .quality-icon {
+        font-size: 3rem;
+        color: var(--primary);
+        margin-bottom: 1rem;
+      }
+
+      /* Contact Section */
+      .contact {
+        background-color: var(--light);
+      }
+
+      .contact-content {
+        max-width: 800px;
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      .contact-form {
+        display: grid;
+        gap: 1.5rem;
+        margin-top: 2rem;
+      }
+
+      .form-group {
+        text-align: right;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 500;
+      }
+
+      .form-group input,
+      .form-group textarea {
+        width: 100%;
+        padding: 0.8rem 1rem;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 1rem;
+        transition: var(--transition);
+      }
+
+      .form-group input:focus,
+      .form-group textarea:focus {
+        outline: none;
+        border-color: var(--primary);
+        box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.2);
+      }
+
+      /* Footer */
+      footer {
+        background-color: var(--dark);
+        color: white;
+        padding: 3rem 2rem;
+        text-align: center;
+      }
+
+      .footer-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        margin-bottom: 2rem;
+      }
+
+      .footer-section h3 {
+        margin-bottom: 1rem;
+        color: var(--primary);
+      }
+
+      .social-links {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+
+      .social-links a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        color: white;
+        transition: var(--transition);
+      }
+
+      .social-links a:hover {
+        background-color: var(--primary);
+        transform: translateY(-3px);
+      }
+
+      .copyright {
+        padding-top: 2rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        color: rgba(255, 255, 255, 0.7);
+      }
+      .product-image {
+        height: 200px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: var(--light);
+        overflow: hidden;
+      }
+
+      .product-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: var(--transition);
+      }
+
+      .product-card:hover .product-image img {
+        transform: scale(1.05);
+      }
+      /* Animations */
+      @keyframes fadeUp {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @media (min-width: 1024px) {
+        .about-text h3 {
+          font-size: 2.2rem; /* Default was likely ~1.5–1.8rem — adjust as needed */
+          margin-bottom: 1rem;
+        }
+        .about-text {
+          font-size: 1.2rem; /* Default was likely ~1.5–1.8rem — adjust as needed */
+        }
+      }
+
+      @media (min-width: 1200px) {
         .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+          font-size: 6.3rem; /* Increased from 3.5rem */
         }
 
         .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
+          font-size: 2.1rem; /* Increased from 1.2rem */
+          max-width: 1050px;
         }
 
-        .btn {
-            display: inline-block;
-            padding: 0.8rem 2rem;
-            background-color: var(--primary);
-            color: white;
-            border: none;
-            border-radius: 50px;
-            font-weight: bold;
-            text-decoration: none;
-            transition: var(--transition);
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        .hero-content {
+          max-width: 1350px;
         }
 
-        .btn:hover {
-            background-color: var(--primary-dark);
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+        .hero .btn {
+          padding: 1.5rem 3.75rem; /* Slightly more padding */
+          font-size: 1.65rem; /* Slightly larger text */
+        }
+        @keyframes scaleIn {
+          from {
+            transform: translateY(45px) scale(0.96);
+          }
+          to {
+            transform: translateY(0) scale(1);
+          }
+        }
+      }
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .nav-links {
+          display: none;
         }
 
-        /* Sections */
-        section {
-            padding: 5rem 2rem;
+        .mobile-menu-btn {
+          display: block;
         }
 
-        .section-title {
-            text-align: center;
-            margin-bottom: 3rem;
-            position: relative;
-        }
-
-        .section-title h2 {
-            font-size: 2.5rem;
-            color: var(--secondary);
-            display: inline-block;
-        }
-
-        .section-title h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            right: 50%;
-            transform: translateX(50%);
-            width: 80px;
-            height: 3px;
-            background-color: var(--primary);
-        }
-
-        /* About Section */
-        .about {
-            background-color: white;
+        .hero h1 {
+          font-size: 2.5rem;
         }
 
         .about-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
+          grid-template-columns: 1fr;
         }
 
-        .about-text {
-            opacity: 0;
-            transform: translateX(-30px);
-            transition: all 0.8s ease;
-        }
-
-        .about-text.visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
+        .about-text,
         .about-image {
-            opacity: 0;
-            transform: translateX(30px);
-            transition: all 0.8s ease;
+          transform: translateY(30px);
         }
 
+        .about-text.visible,
         .about-image.visible {
-            opacity: 1;
-            transform: translateX(0);
+          transform: translateY(0);
         }
-
-        .about-image img {
-            width: 100%;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Products Section */
-        .products {
-            background-color: var(--light);
-        }
-
-        .products-grid {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .product-card {
-            background-color: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: var(--transition);
-            opacity: 0;
-            transform: translateY(30px);
-        }
-
-        .product-card.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .product-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .product-image {
-            height: 200px;
-            background-color: var(--primary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 3rem;
-        }
-
-        .product-content {
-            padding: 1.5rem;
-        }
-
-        .product-content h3 {
-            margin-bottom: 0.5rem;
-            color: var(--secondary);
-        }
-
-        .product-content p {
-            color: var(--gray);
-            margin-bottom: 1rem;
-        }
-
-        .product-price {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .price {
-            font-weight: bold;
-            color: var(--primary);
-            font-size: 1.2rem;
-        }
-
-        /* Quality Section */
-        .quality {
-            background-color: white;
-        }
-
-        .quality-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-
-        .quality-item {
-            text-align: center;
-            padding: 2rem 1rem;
-            border-radius: 10px;
-            transition: var(--transition);
-            opacity: 0;
-            transform: translateY(30px);
-        }
-
-        .quality-item.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .quality-item:hover {
-            background-color: var(--light);
-            transform: translateY(-5px);
-        }
-
-        .quality-icon {
-            font-size: 3rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
-
-        /* Contact Section */
-        .contact {
-            background-color: var(--light);
-        }
-
-        .contact-content {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .contact-form {
-            display: grid;
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .form-group {
-            text-align: right;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 0.8rem 1rem;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 1rem;
-            transition: var(--transition);
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.2);
-        }
-
-        /* Footer */
-        footer {
-            background-color: var(--dark);
-            color: white;
-            padding: 3rem 2rem;
-            text-align: center;
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .footer-section h3 {
-            margin-bottom: 1rem;
-            color: var(--primary);
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-
-        .social-links a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            color: white;
-            transition: var(--transition);
-        }
-
-        .social-links a:hover {
-            background-color: var(--primary);
-            transform: translateY(-3px);
-        }
-
-        .copyright {
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: rgba(255, 255, 255, 0.7);
-        }
-
-        /* Animations */
-        @keyframes fadeUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .mobile-menu-btn {
-                display: block;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .about-content {
-                grid-template-columns: 1fr;
-            }
-
-            .about-text, .about-image {
-                transform: translateY(30px);
-            }
-
-            .about-text.visible, .about-image.visible {
-                transform: translateY(0);
-            }
-        }
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <!-- Navigation -->
     <nav>
-        <div class="logo">
-            <i class="fas fa-spa"></i>
-            <span>زعفران میترا</span>
-        </div>
-        <div class="nav-links">
-            <a href="#home">خانه</a>
-            <a href="#about">درباره ما</a>
-            <a href="#products">محصولات</a>
-            <a href="#quality">کیفیت</a>
-            <a href="#contact">تماس با ما</a>
-        </div>
-        <button class="mobile-menu-btn">
-            <i class="fas fa-bars"></i>
-        </button>
+      <div class="logo">
+        <img src="images/logo1.png" alt="زعفران میترا" class="logo-icon" />
+        <span>زعفران میترا</span>
+      </div>
+      <div class="nav-links">
+        <a href="#home">خانه</a>
+        <a href="#about">درباره ما</a>
+        <a href="#products">محصولات</a>
+        <a href="#quality">کیفیت</a>
+        <a href="#contact">تماس با ما</a>
+      </div>
+      <button class="mobile-menu-btn">
+        <i class="fas fa-bars"></i>
+      </button>
     </nav>
 
     <!-- Hero Section -->
     <section id="home" class="hero">
-        <div class="hero-content">
-            <h1>طلای سرخ ایران</h1>
-            <p>زعفران اصل و با کیفیت از مزارع خراسان، با عطر و طعم بی‌نظیر برای آشپزی و سلامتی شما</p>
-            <a href="#products" class="btn">مشاهده محصولات</a>
-        </div>
+      <div class="hero-content">
+        <h1>طلای سرخ ایران</h1>
+        <p>
+          زعفران اصل و با کیفیت از مزارع خراسان، با عطر و طعم بی‌نظیر برای آشپزی
+          و سلامتی شما
+        </p>
+        <a href="#products" class="btn">مشاهده محصولات</a>
+      </div>
     </section>
 
     <!-- About Section -->
     <section id="about" class="about">
-        <div class="section-title">
-            <h2>درباره زعفران میترا</h2>
+      <div class="section-title">
+        <h2>درباره زعفران میترا</h2>
+      </div>
+      <div class="about-content">
+        <div class="about-text">
+          <h3>داستان ما</h3>
+          <p>
+            "سربرآورده از دل تاریخ، از سرزمین خورشید سرخ ، خراسان تا گرمابخش
+            سفره‌های رنگین شما…" میترا در ایران باستان نماد نور، عدالت، پیوند و
+            گرماست. ما با الهام از یک الهه‌ی باستانی ایرانی، اصالت کهن زعفران را
+            با زیبایی مدرن و حس لوکس اما قابل‌دسترس، دوباره زنده کرده‌ایم. برند
+            «زعفران میترا» پلی است میان تاریخ، کیفیت و اصالت— و محصولی که
+            قرن‌هاست نشانه‌ی شادی، سلامتی و رنگ سرخ است، اکنون در قالبی جدید
+            برای نسل امروز بازآفرینی شده.
+          </p>
         </div>
-        <div class="about-content">
-            <div class="about-text">
-                <h3>تاریخچه و افتخارات ما</h3>
-                <p>زعفران میترا با بیش از سه دهه تجربه در کشت، فرآوری و صادرات زعفران، یکی از معتبرترین برندهای زعفران در ایران است. ما با بهره‌گیری از بهترین زمین‌های کشت زعفران در خراسان و استفاده از روش‌های مدرن فرآوری، محصولی با بالاترین کیفیت را به مشتریان خود ارائه می‌دهیم.</p>
-                <p>کیفیت، اصالت و رضایت مشتری مهم‌ترین اصول کاری ماست. تمامی مراحل تولید زعفران میترا تحت نظارت دقیق کارشناسان مجرب انجام می‌شود تا محصول نهایی عاری از هرگونه ناخالصی و با بالاترین میزان کروسین (عامل رنگ‌دهی) و سافرانال (عامل عطر) باشد.</p>
-                <a href="#contact" class="btn">تماس با ما</a>
-            </div>
-            <div class="about-image">
-                <img src="https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="زعفران میترا">
-            </div>
+        <div class="about-image">
+          <img src="images/story.jpg" alt="زعفران میترا" />
         </div>
+      </div>
     </section>
 
     <!-- Products Section -->
     <section id="products" class="products">
-        <div class="section-title">
-            <h2>محصولات ما</h2>
-        </div>
-        <div class="products-grid">
-            <div class="product-card">
-                <div class="product-image">
-                    <i class="fas fa-gem"></i>
-                </div>
-                <div class="product-content">
-                    <h3>زعفران سوپرنگین</h3>
-                    <p>زعفران با رشته‌های کاملاً قرمز و بدون خامه، عطر و طعم بی‌نظیر</p>
-                    <div class="product-price">
-                        <span class="price">۲۹۰,۰۰۰ تومان</span>
-                        <a href="#contact" class="btn">سفارش</a>
-                    </div>
-                </div>
-            </div>
-            <div class="product-card">
-                <div class="product-image">
-                    <i class="fas fa-crown"></i>
-                </div>
-                <div class="product-content">
-                    <h3>زعفران نگین</h3>
-                    <p>زعفران با رشته‌های قرمز و درصد بسیار کم خامه، کیفیت عالی</p>
-                    <div class="product-price">
-                        <span class="price">۲۴۰,۰۰۰ تومان</span>
-                        <a href="#contact" class="btn">سفارش</a>
-                    </div>
-                </div>
-            </div>
-            <div class="product-card">
-                <div class="product-image">
-                    <i class="fas fa-star"></i>
-                </div>
-                <div class="product-content">
-                    <h3>زعفران پوشالی</h3>
-                    <p>زعفران با رشته‌های کامل و یکدست، مناسب برای مصارف روزانه</p>
-                    <div class="product-price">
-                        <span class="price">۱۹۰,۰۰۰ تومان</span>
-                        <a href="#contact" class="btn">سفارش</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+      <div class="section-title">
+        <h2>محصولات ما</h2>
+      </div>
+      <div id="products-grid" class="products-grid">
+        <!-- Products will load here -->
+      </div>
     </section>
 
     <!-- Quality Section -->
     <section id="quality" class="quality">
-        <div class="section-title">
-            <h2>چرا زعفران میترا؟</h2>
+      <div class="section-title">
+        <h2>چرا زعفران میترا؟</h2>
+      </div>
+      <div class="quality-content">
+        <div class="quality-item">
+          <div class="quality-icon">
+            <i class="fas fa-award"></i>
+          </div>
+          <h3>کیفیت تضمینی</h3>
+          <p>
+            کلیه محصولات ما دارای گواهی اصالت و سلامت از آزمایشگاه های معتبر
+            می‌باشد
+          </p>
         </div>
-        <div class="quality-content">
-            <div class="quality-item">
-                <div class="quality-icon">
-                    <i class="fas fa-award"></i>
-                </div>
-                <h3>کیفیت تضمینی</h3>
-                <p>کلیه محصولات ما دارای گواهی اصالت و سلامت از سازمان‌های مربوطه می‌باشد</p>
-            </div>
-            <div class="quality-item">
-                <div class="quality-icon">
-                    <i class="fas fa-seedling"></i>
-                </div>
-                <h3>کشت ارگانیک</h3>
-                <p>زعفران ما به روش کاملاً ارگانیک و بدون استفاده از سموم شیمیایی کشت می‌شود</p>
-            </div>
-            <div class="quality-item">
-                <div class="quality-icon">
-                    <i class="fas fa-shipping-fast"></i>
-                </div>
-                <h3>ارسال سریع</h3>
-                <p>ارسال به تمام نقاط ایران و جهان در کوتاه‌ترین زمان ممکن</p>
-            </div>
-            <div class="quality-item">
-                <div class="quality-icon">
-                    <i class="fas fa-headset"></i>
-                </div>
-                <h3>پشتیبانی ۲۴/۷</h3>
-                <p>پشتیبانی و مشاوره رایگان قبل و بعد از خرید</p>
-            </div>
+        <div class="quality-item">
+          <div class="quality-icon">
+            <i class="fas fa-seedling"></i>
+          </div>
+          <h3>تهیه از کشاورز</h3>
+          <p>
+            محصولات به طور مستقیم و بدون واسطه از کشاورز تهیه می شوند و به دست
+            شما می رسند
+          </p>
         </div>
+        <div class="quality-item">
+          <div class="quality-icon">
+            <i class="fas fa-shipping-fast"></i>
+          </div>
+          <h3>ارسال مطمئن</h3>
+          <p>
+            ارسال به تمام نقاط ایران در کوتاه‌ترین زمان ممکن با بسته بندی مناسب
+          </p>
+        </div>
+        <div class="quality-item">
+          <div class="quality-icon">
+            <i class="fas fa-headset"></i>
+          </div>
+          <h3>پشتیبانی آنلاین</h3>
+          <p>پشتیبانی و مشاوره رایگان قبل و بعد از خرید</p>
+        </div>
+      </div>
     </section>
 
     <!-- Contact Section -->
     <section id="contact" class="contact">
-        <div class="section-title">
-            <h2>تماس با ما</h2>
+      <div class="section-title">
+        <h2>تماس با ما</h2>
+      </div>
+      <div class="contact-content">
+        <p>برای سفارش محصولات و دریافت مشاوره رایگان، با ما در تماس باشید</p>
+        <div class="contact-form">
+          <div class="form-group">
+            <label for="name">نام و نام خانوادگی</label>
+            <input type="text" id="name" placeholder="نام خود را وارد کنید" />
+          </div>
+          <div class="form-group">
+            <label for="email">شماره تماس</label>
+            <input
+              type="email"
+              id="email"
+              placeholder="شماره تماس خود را وارد کنید"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="message">پیام</label>
+            <textarea
+              id="message"
+              rows="5"
+              placeholder="پیام خود را وارد کنید"
+            ></textarea>
+          </div>
+          <button type="submit" class="btn">ارسال پیام</button>
         </div>
-        <div class="contact-content">
-            <p>برای سفارش محصولات و دریافت مشاوره رایگان، با ما در تماس باشید</p>
-            <div class="contact-form">
-                <div class="form-group">
-                    <label for="name">نام و نام خانوادگی</label>
-                    <input type="text" id="name" placeholder="نام خود را وارد کنید">
-                </div>
-                <div class="form-group">
-                    <label for="email">ایمیل</label>
-                    <input type="email" id="email" placeholder="ایمیل خود را وارد کنید">
-                </div>
-                <div class="form-group">
-                    <label for="phone">شماره تماس</label>
-                    <input type="tel" id="phone" placeholder="شماره تماس خود را وارد کنید">
-                </div>
-                <div class="form-group">
-                    <label for="message">پیام</label>
-                    <textarea id="message" rows="5" placeholder="پیام خود را وارد کنید"></textarea>
-                </div>
-                <button type="submit" class="btn">ارسال پیام</button>
-            </div>
-        </div>
+      </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>زعفران میترا</h3>
-                <p>ارائه کننده بهترین زعفران ایرانی با کیفیت تضمینی و قیمت مناسب</p>
-            </div>
-            <div class="footer-section">
-                <h3>اطلاعات تماس</h3>
-                <p><i class="fas fa-map-marker-alt"></i> خراسان رضوی، مشهد، بلوار وکیل آباد</p>
-                <p><i class="fas fa-phone"></i> ۰۵۱-۳۸۵۴۱۲۳۴</p>
-                <p><i class="fas fa-envelope"></i> info@mitrasaffron.com</p>
-            </div>
-            <div class="footer-section">
-                <h3>شبکه‌های اجتماعی</h3>
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-telegram"></i></a>
-                    <a href="#"><i class="fab fa-whatsapp"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                </div>
-            </div>
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>زعفران میترا</h3>
+          <p>ارائه کننده بهترین زعفران ایرانی با کیفیت تضمینی و قیمت مناسب</p>
         </div>
-        <div class="copyright">
-            <p>تمامی حقوق برای زعفران میترا محفوظ است © ۱۴۰۲</p>
+        <div class="footer-section">
+          <h3>اطلاعات تماس</h3>
+
+          <p><i class="fas fa-phone"></i> 09057482229</p>
+          <p><i class="fas fa-envelope"></i> mitrasaffron@gmail.com</p>
         </div>
+        <div class="footer-section">
+          <h3>شبکه‌های اجتماعی</h3>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-telegram"></i></a>
+            <a href="#"><i class="fab fa-whatsapp"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>تمامی حقوق برای زعفران میترا محفوظ است © ۱۴۰۴</p>
+      </div>
     </footer>
 
     <script>
-        // Scroll Animation
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
+      // Scroll Animation
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      };
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        // Observe elements for animation
-        document.addEventListener('DOMContentLoaded', () => {
-            const animatedElements = document.querySelectorAll('.about-text, .about-image, .product-card, .quality-item');
-            
-            animatedElements.forEach(el => {
-                observer.observe(el);
-            });
-
-            // Mobile menu toggle
-            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-            const navLinks = document.querySelector('.nav-links');
-            
-            mobileMenuBtn.addEventListener('click', () => {
-                navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
-            });
-
-            // Smooth scroll for navigation links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    
-                    const targetId = this.getAttribute('href');
-                    if (targetId === '#') return;
-                    
-                    const targetElement = document.querySelector(targetId);
-                    if (targetElement) {
-                        window.scrollTo({
-                            top: targetElement.offsetTop - 80,
-                            behavior: 'smooth'
-                        });
-                        
-                        // Close mobile menu if open
-                        if (window.innerWidth <= 768) {
-                            navLinks.style.display = 'none';
-                        }
-                    }
-                });
-            });
-
-            // Navbar background on scroll
-            window.addEventListener('scroll', () => {
-                const nav = document.querySelector('nav');
-                if (window.scrollY > 100) {
-                    nav.style.backgroundColor = 'rgba(255, 255, 255, 0.98)';
-                    nav.style.padding = '0.7rem 2rem';
-                } else {
-                    nav.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
-                    nav.style.padding = '1rem 2rem';
-                }
-            });
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
         });
+      }, observerOptions);
+
+      // Observe elements for animation
+      document.addEventListener("DOMContentLoaded", () => {
+        const animatedElements = document.querySelectorAll(
+          ".about-text, .about-image, .product-card, .quality-item"
+        );
+
+        animatedElements.forEach((el) => {
+          observer.observe(el);
+        });
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector(".mobile-menu-btn");
+        const navLinks = document.querySelector(".nav-links");
+
+        mobileMenuBtn.addEventListener("click", () => {
+          navLinks.style.display =
+            navLinks.style.display === "flex" ? "none" : "flex";
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+          anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+
+            const targetId = this.getAttribute("href");
+            if (targetId === "#") return;
+
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+              window.scrollTo({
+                top: targetElement.offsetTop - 80,
+                behavior: "smooth",
+              });
+
+              // Close mobile menu if open
+              if (window.innerWidth <= 768) {
+                navLinks.style.display = "none";
+              }
+            }
+          });
+        });
+
+        // Navbar background on scroll
+        window.addEventListener("scroll", () => {
+          const nav = document.querySelector("nav");
+          if (window.scrollY > 100) {
+            nav.style.backgroundColor = "rgba(255, 255, 255, 0.98)";
+            nav.style.padding = "0.7rem 2rem";
+          } else {
+            nav.style.backgroundColor = "rgba(255, 255, 255, 0.95)";
+            nav.style.padding = "1rem 2rem";
+          }
+        });
+      });
     </script>
-</body>
+    <script>
+      // Load products from JSON and render them
+      async function loadProducts() {
+        try {
+          const response = await fetch("products.json");
+          if (!response.ok) throw new Error("Failed to load products");
+          const products = await response.json();
+
+          const grid = document.getElementById("products-grid");
+          grid.innerHTML = products
+            .map(
+              (product) => `
+                <div class="product-card">
+                    <div class="product-image">
+                    <img src="${product.image}" alt="${product.name}" loading="lazy" />
+                    </div>
+                    <div class="product-content">
+                    <h3>${product.name}</h3>
+                    <p>${product.description}</p>
+                    <div class="product-price">
+                        <span class="price">${product.price}</span>
+                        <a href="#contact" class="btn">سفارش</a>
+                    </div>
+                    </div>
+                </div>
+                `
+            )
+            .join("");
+
+          // Re-observe new cards for scroll animations
+          const observer = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  entry.target.classList.add("visible");
+                }
+              });
+            },
+            { threshold: 0.1 }
+          );
+
+          document.querySelectorAll(".product-card").forEach((card) => {
+            observer.observe(card);
+          });
+        } catch (error) {
+          console.error("Error loading products:", error);
+          document.getElementById("products-grid").innerHTML =
+            '<p style="text-align:center; color:var(--secondary);">خطا در بارگذاری محصولات</p>';
+        }
+      }
+
+      // Run when page loads
+      document.addEventListener("DOMContentLoaded", () => {
+        loadProducts();
+      });
+    </script>
+  </body>
 </html>
